@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35931.197 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuraCinema.Api", "AuraCinema.Api\AuraCinema.Api.csproj", "{12CB9007-9382-4E21-83DD-BBE612377538}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{12CB9007-9382-4E21-83DD-BBE612377538}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12CB9007-9382-4E21-83DD-BBE612377538}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12CB9007-9382-4E21-83DD-BBE612377538}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12CB9007-9382-4E21-83DD-BBE612377538}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B7FCE70D-8BE9-4CD2-B018-C2AE9F8BE706}
+	EndGlobalSection
+EndGlobal
