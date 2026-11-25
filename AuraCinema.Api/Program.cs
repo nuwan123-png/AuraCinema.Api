@@ -111,11 +111,11 @@ api.MapGet("/home", async (NpgsqlDataSource db, IMemoryCache cache) =>
     await using var conn = await db.OpenConnectionAsync();
 
     var latestMovies = await conn.QueryAsync(
-        @"SELECT id, title, image, year, type, genre, watch_with_sub 
+        @"SELECT id, title, image, year, type, genre, language, tags, watch_with_sub 
           FROM movies WHERE type = 'movie' ORDER BY created_at DESC LIMIT 12");
 
     var latestSeries = await conn.QueryAsync(
-        @"SELECT id, title, image, year, type, genre, watch_with_sub 
+        @"SELECT id, title, image, year, type, genre, language, tags, watch_with_sub 
           FROM movies WHERE type != 'movie' ORDER BY created_at DESC LIMIT 12");
 
     var result = new { latestMovies, latestSeries };
@@ -144,7 +144,7 @@ api.MapGet("/movies", async (string? type, string? genre, bool? subOnly, int pag
     if (subOnly == true) conditions.Add("watch_with_sub = true");
 
     string whereClause = conditions.Count > 0 ? "WHERE " + string.Join(" AND ", conditions) : "";
-    string sql = $@"SELECT id, title, image, year, type, genre, watch_with_sub 
+    string sql = $@"SELECT id, title, image, year, type, genre, language, tags, watch_with_sub 
                     FROM movies {whereClause} ORDER BY created_at DESC LIMIT @Limit OFFSET @Offset";
 
     var movies = await conn.QueryAsync(sql, new { Type = type, Genre = $"%{genre}%", Limit = pageSize, Offset = offset });
@@ -192,7 +192,7 @@ api.MapGet("/search", async (string q, NpgsqlDataSource db, IMemoryCache cache) 
 
     await using var conn = await db.OpenConnectionAsync();
     var results = await conn.QueryAsync(
-        @"SELECT id, title, image, year, type, watch_with_sub 
+        @"SELECT id, title, image, year, type, genre, language, tags, watch_with_sub 
           FROM movies WHERE title ILIKE @Pattern ORDER BY created_at DESC LIMIT 20",
         new { Pattern = $"%{normalizedQuery}%" });
 
